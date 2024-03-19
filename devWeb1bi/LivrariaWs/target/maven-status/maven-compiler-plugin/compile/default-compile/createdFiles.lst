@@ -1,0 +1,8 @@
+Livraria_WS\Exceptions\AutorizacaoException.class
+Livraria_WS\Services\PessoaService.class
+Livraria_WS\Exceptions\ValidacaoException.class
+Livraria_WS\Model\Livro.class
+Livraria_WS\Services\LivroService.class
+Livraria_WS\Model\Pessoa.class
+Livraria_WS\Interfaces\PessoaWebInterface.class
+Livraria_WS\infrastructure\ConnectionFactory.class
