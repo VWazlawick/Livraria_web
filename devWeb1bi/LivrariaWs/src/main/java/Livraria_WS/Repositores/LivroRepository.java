@@ -133,21 +133,23 @@ import java.sql.Statement;
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             rs = ps.executeQuery();
             
-            livro = new Livro();
+            if(rs.next()){
+                livro = new Livro();
             
-            livro.setId(rs.getInt("idlivro"));
-            livro.setNmLivro(rs.getString("nmlivro"));
-            livro.setDtLancamento(rs.getDate("dtlancamento"));
-            livro.setNrpagina(rs.getInt("nrpagina"));
-                
-            Pessoa autor = new Pessoa();
-            PessoaService pss = new PessoaService();
-            autor = pss.findById(rs.getInt("idautora"));
-            livro.setAutor(autor);
-                
-            Pessoa editora = new Pessoa();
-            editora = pss.findById(rs.getInt("ideditora"));
-            livro.setEditora(editora);
+                livro.setId(rs.getInt("idlivro"));
+                livro.setNmLivro(rs.getString("nmlivro"));
+                livro.setDtLancamento(rs.getDate("dtlancamento"));
+                livro.setNrpagina(rs.getInt("nrpagina"));
+
+                Pessoa autor = new Pessoa();
+                PessoaService pss = new PessoaService();
+                autor = pss.findById(rs.getInt("idautora"));
+                livro.setAutor(autor);
+
+                Pessoa editora = new Pessoa();
+                editora = pss.findById(rs.getInt("ideditora"));
+                livro.setEditora(editora);
+            }
         } finally {
             if(rs!=null){
                 rs.close();
